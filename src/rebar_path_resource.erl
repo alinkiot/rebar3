@@ -43,6 +43,8 @@ download(TmpDir, AppInfo, State, _) ->
   end.
 
 download_(Dir, {path, Path}, _State) ->
+    {ok, NowDir} = file:get_cwd(),
+    rebar_log:log(debug, "now_dir is ~p", [NowDir]),
   ok = filelib:ensure_dir(Dir),
   {ok, Cwd} = file:get_cwd(),
   Source = filename:join([Cwd, Path]),
