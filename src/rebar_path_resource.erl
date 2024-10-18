@@ -43,7 +43,6 @@ download(TmpDir, AppInfo, State, _) ->
   end.
 
 download_(Dir, {path, Path}, _State) ->
-  rebar_log:log(debug, "copied source from=~p, to=~p ~n", [Path]),
   ok = filelib:ensure_dir(Dir),
   {ok, Cwd} = file:get_cwd(),
   Source = filename:join([Cwd, Path]),
@@ -144,6 +143,6 @@ foreach(Fun, Root, Ignore, Path) ->
                 {error, _Reason} ->
                    ok
             end;
-        false -> 
+        false ->
             Fun(Path)
     end.
