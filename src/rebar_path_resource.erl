@@ -44,7 +44,7 @@ download(TmpDir, AppInfo, State, _) ->
 
 download_(Dir, {path, Path}, _State) ->
     {ok, Cwd} = file:get_cwd(),
-    rebar_log:log(debug, "now_dir is ~p, copy from ", [Cwd, Path]),
+    rebar_log:log(debug, "now_dir is ~p, copy from ~p", [Cwd, Path]),
   ok = filelib:ensure_dir(Dir),
   Source = filename:join([Cwd, Path]),
   foreach(fun(X) -> copy(X, Source, Dir) end, [".git", "_build", "examples"], Source),
